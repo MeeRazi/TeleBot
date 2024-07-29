@@ -22,11 +22,6 @@ async def greet_user(client, message: Message):
     user_id = message.from_user.id
     if message.from_user.is_bot:
         return
-    # Greet new users
-    if user_id not in user and user_id != ADMIN:
-        user[user_id] = 1
-        await message.reply_text(f"Hello, How can I help you?")
-    
     # Check if the admin is back from AFK
     if user_id == ADMIN and user_id in afk_status:
         del afk_status[user_id]
